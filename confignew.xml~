@@ -6,10 +6,10 @@
     </feature>
     <name>Camera</name>
     <description>
-NHW Camera app
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="nwhite@stern.nyu.edu" href="http://www.stern.nyu.edu/~nwhite">
-        Norman White
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
     <access origin="*" />
