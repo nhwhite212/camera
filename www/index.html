@@ -1,121 +1,105 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1404.34">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
-</head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Capture Photo&lt;/title&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="text/javascript" charset="utf-8" src="cordova.js"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="text/javascript" charset="utf-8"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>var pictureSource; <span class="Apple-converted-space">  </span>// picture source</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>var destinationType; // sets the format of returned value</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Wait for device API libraries to load</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.addEventListener("deviceready",onDeviceReady,false);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// device APIs are available</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function onDeviceReady() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>pictureSource=navigator.camera.PictureSourceType;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>destinationType=navigator.camera.DestinationType;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Called when a photo is successfully retrieved</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function onPhotoDataSuccess(imageData) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Uncomment to view the base64-encoded image data</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// console.log(imageData);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Get image handle</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>var smallImage = document.getElementById('smallImage');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Unhide image elements</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>smallImage.style.display = 'block';</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Show the captured photo</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// The in-line CSS rules are used to resize the image</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>smallImage.src = "data:image/jpeg;base64," + imageData;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Called when a photo is successfully retrieved</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function onPhotoURISuccess(imageURI) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Uncomment to view the image file URI</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// console.log(imageURI);</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Get image handle</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>var largeImage = document.getElementById('largeImage');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Unhide image elements</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>largeImage.style.display = 'block';</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Show the captured photo</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// The in-line CSS rules are used to resize the image</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>largeImage.src = imageURI;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// A button will call this function</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function capturePhoto() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Take picture using device camera and retrieve image as base64-encoded string</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>destinationType: destinationType.DATA_URL });</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// A button will call this function</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function capturePhotoEdit() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Take picture using device camera, allow edit, and retrieve image as base64-encoded string</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>destinationType: destinationType.DATA_URL });</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// A button will call this function</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function getPhoto(source) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// Retrieve image file location from specified source</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>destinationType: destinationType.FILE_URI,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>sourceType: source });</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// Called if something bad happens.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>//</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function onFail(message) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>alert('Failed because: ' + message);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button onclick="capturePhoto();"&gt;Capture Photo&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button onclick="capturePhotoEdit();"&gt;Capture Editable Photo&lt;/button&gt; &lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"&gt;From Photo Library&lt;/button&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);"&gt;From Photo Album&lt;/button&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img style="display:none;width:60px;height:60px;" id="smallImage" src="" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img style="display:none;" id="largeImage" src="" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
-</body>
+  <head>
+    <title>Capture Photo</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+        destinationType: destinationType.DATA_URL });
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    //
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
+  </head>
+  <body>
+    <button onclick="capturePhoto();">Capture Photo</button> <br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </body>
 </html>
+
